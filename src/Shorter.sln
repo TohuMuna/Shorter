@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shorter.Providers", "Providers\Shorter.Providers\Shorter.Providers.csproj", "{BB3A8C74-5DF8-4B7E-A9C2-1A337244118C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shorter.Providers.Azure", "Providers\Shorter.Providers.Azure\Shorter.Providers.Azure.csproj", "{EF6BFFC6-E33E-49BE-980E-76B67793BF44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BB3A8C74-5DF8-4B7E-A9C2-1A337244118C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB3A8C74-5DF8-4B7E-A9C2-1A337244118C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB3A8C74-5DF8-4B7E-A9C2-1A337244118C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF6BFFC6-E33E-49BE-980E-76B67793BF44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF6BFFC6-E33E-49BE-980E-76B67793BF44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF6BFFC6-E33E-49BE-980E-76B67793BF44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF6BFFC6-E33E-49BE-980E-76B67793BF44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +54,6 @@ Global
 		{CC30D7FA-ECE8-4F09-976A-222D03B71041} = {55AD31BD-D8FE-4E1D-8977-6F3016555244}
 		{E4CC804C-5953-4F20-AB1F-C566C129AA15} = {55AD31BD-D8FE-4E1D-8977-6F3016555244}
 		{BB3A8C74-5DF8-4B7E-A9C2-1A337244118C} = {45701317-872A-4140-BDCB-76739E8AC56F}
+		{EF6BFFC6-E33E-49BE-980E-76B67793BF44} = {45701317-872A-4140-BDCB-76739E8AC56F}
 	EndGlobalSection
 EndGlobal

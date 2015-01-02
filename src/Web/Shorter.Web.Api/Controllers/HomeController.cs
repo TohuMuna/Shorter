@@ -2,7 +2,7 @@
 {
     using System.Web.Http;
 
-    public class HomeController : BaseController
+    public class HomeController : ApiController
     {
         [Route("")]
         public IHttpActionResult Get()

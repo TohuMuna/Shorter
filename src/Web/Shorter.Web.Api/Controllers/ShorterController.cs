@@ -1,25 +1,42 @@
 ﻿namespace Shorter.Web.Api.Controllers
 {
-    using System;
+    using System.Threading.Tasks;
     using System.Web.Http;
+
+    using Shorter.Providers;
+    using Shorter.Web.Api.Models;
 
     [RoutePrefix("shorter")]
     public class ShorterController : BaseController
     {
-        [Route("{shortCode}")]
-        public IHttpActionResult GetUrl(string shortCode)
+        public ShorterController(IProvider provider)
+            : base(provider)
         {
-            // Here we call our shorter service and locate an existing record
-            throw new NotImplementedException();
+        }
+
+        [Route("{shortCode}")]
+        public async Task<IHttpActionResult> GetUrl(string shortCode)
+        {
+            var url = await this.Provider.GetUrlFromShortCode(shortCode);
+            if (url == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.Ok(url);
         }
 
         [HttpPost]
         [Route("")]
-        public IHttpActionResult CreateShortCode()
+        public async Task<IHttpActionResult> CreateShortCode(CreateCodeViewModel request)
         {
-            // Add the url to our database and return the shortcode
-            // Inside this call we will check if the url already exists
-            throw new NotImplementedException();
+            var shortCode = await this.Provider.GenerateShortCode(request.Url);
+            if (shortCode == null)
+            {
+                return this.Conflict();
+            }
+
+            return this.Ok(shortCode);
         }
     }
 }

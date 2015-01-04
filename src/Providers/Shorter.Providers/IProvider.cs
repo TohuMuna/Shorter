@@ -8,6 +8,6 @@
     {
         Task<ShortCode> GenerateShortCode(string url);
 
-        Task<ShortCode> GetUrlFromShortCode(string shortCode);
+        Task<ShortCode> GetUrlFromShortCode(string code);
     }
 }

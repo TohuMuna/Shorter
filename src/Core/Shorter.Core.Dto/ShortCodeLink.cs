@@ -1,6 +1,6 @@
 ﻿namespace Shorter.Core.Dto
 {
-    public class ShortCodeLink
+    public class ShortCodeLink : IModel
     {
         public string Id { get; set; }
         public string ShortCode { get; set; }

@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class ShortCode
+    public class ShortCode : IModel
     {
         public string Id { get; set; }
         public string Url { get; set; }

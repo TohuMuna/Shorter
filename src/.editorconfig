@@ -1,0 +1,8 @@
+; Per project/solution indentation settings http://srt.lt/K8o9d
+
+; Top-most EditorConfig file
+root = true
+
+[*]
+indent_style = space
+indent_size = 4

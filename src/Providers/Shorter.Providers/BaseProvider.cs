@@ -11,5 +11,7 @@
         public abstract Task<ShortCode> GetUrlFromShortCode(string code);
 
         protected abstract Task<string> GetCode();
+
+        protected abstract Task<ShortCode> IsAlreadyShortened(string url);
     }
 }

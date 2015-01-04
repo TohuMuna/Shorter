@@ -26,7 +26,7 @@
             var op = TableOperation.Retrieve<AzureEntity>(partitionKey, rowKey);
 
             var entity = await table.ExecuteAsync(op);
-            if (entity == null)
+            if (entity == null || entity.Result == null)
             {
                 return default(T);
             }

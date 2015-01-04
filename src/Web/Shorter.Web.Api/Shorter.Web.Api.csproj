@@ -140,6 +140,10 @@
       <Project>{E4CC804C-5953-4F20-AB1F-C566C129AA15}</Project>
       <Name>Shorter.Core.Dto</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Core\Shorter.Core\Shorter.Core.csproj">
+      <Project>{CC30D7FA-ECE8-4F09-976A-222D03B71041}</Project>
+      <Name>Shorter.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Providers\Shorter.Providers.Azure\Shorter.Providers.Azure.csproj">
       <Project>{EF6BFFC6-E33E-49BE-980E-76B67793BF44}</Project>
       <Name>Shorter.Providers.Azure</Name>

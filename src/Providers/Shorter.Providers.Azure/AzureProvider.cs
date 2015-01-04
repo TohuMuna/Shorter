@@ -1,10 +1,12 @@
 ﻿namespace Shorter.Providers.Azure
 {
     using System;
+    using System.Security.Policy;
     using System.Threading.Tasks;
 
     using Shorter.Core;
     using Shorter.Core.Dto;
+    using Shorter.Core.Extensions;
 
     public class AzureProvider : BaseProvider
     {
@@ -17,10 +19,19 @@
 
         public override async Task<ShortCode> GenerateShortCode(string url)
         {
-            var code = await this.GetCode();
-            var shortCode = new ShortCode { Id = code, Url = url, Created = DateTime.UtcNow };
+            var existing = await this.IsAlreadyShortened(url);
+            if (existing != null)
+            {
+                return existing;
+            }
 
-            await this.tableClient.Insert(shortCode);
+            var code = await this.GetCode();
+
+            var shortCode = new ShortCode { Id = code, Url = url, Created = DateTime.UtcNow };
+            var shortCodeLink = new ShortCodeLink { Id = url.UrlToBase64(), ShortCode = code, Url = url };
+
+            await Task.WhenAll(this.tableClient.Insert(shortCode), this.tableClient.Insert(shortCodeLink));
+
             return shortCode;
         }
 
@@ -44,6 +55,18 @@
             }
 
             return code;
+        }
+
+        protected override async Task<ShortCode> IsAlreadyShortened(string url)
+        {
+            var baseLink = url.UrlToBase64();
+            var link = await this.tableClient.Get<ShortCodeLink>(baseLink, baseLink);
+            if (link == null)
+            {
+                return null;
+            }
+
+            return await this.tableClient.Get<ShortCode>(link.ShortCode, link.ShortCode);
         }
     }
 }

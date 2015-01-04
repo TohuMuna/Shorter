@@ -1,8 +1,10 @@
 ﻿namespace Shorter.Web.Api.Controllers
 {
+    using System;
     using System.Threading.Tasks;
     using System.Web.Http;
 
+    using Shorter.Core.Extensions;
     using Shorter.Providers;
     using Shorter.Web.Api.Models;
 
@@ -30,6 +32,15 @@
         [Route("")]
         public async Task<IHttpActionResult> CreateShortCode(CreateCodeViewModel request)
         {
+            try
+            {
+                request.Url = request.Url.ValidateUrl();
+            }
+            catch (Exception e)
+            {
+                return this.BadRequest(e.Message);
+            }
+
             var shortCode = await this.Provider.GenerateShortCode(request.Url);
             if (shortCode == null)
             {

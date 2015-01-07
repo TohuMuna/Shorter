@@ -28,9 +28,8 @@
             return this.Ok(url);
         }
 
-        [HttpPost]
-        [Route("")]
-        public async Task<IHttpActionResult> CreateShortCode(CreateCodeViewModel request)
+        [Route]
+        public async Task<IHttpActionResult> PostShortCode(CreateCodeViewModel request)
         {
             try
             {
